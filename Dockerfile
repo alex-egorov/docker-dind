@@ -1,6 +1,16 @@
-FROM alpine:3.7
+FROM alpine:3.6
 MAINTAINER Alex Egorov <alex202@egorov.net>
 # from jpetazzo/dind
+
+ARG VCS_REF
+ARG BUILD_DATE
+
+# Metadata
+LABEL org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/alex-egorov/docker-helm" \
+      org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.docker.dockerfile="/Dockerfile"
+      
 
 # Install the magic wrapper.
 ADD ./wrapdocker /usr/local/bin/wrapdocker
